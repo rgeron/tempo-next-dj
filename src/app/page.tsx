@@ -23,7 +23,7 @@ export default async function Home() {
             <div className="w-full md:w-1/2 flex justify-center">
               <div className="relative w-full max-w-md aspect-[2/3] shadow-xl rounded-lg overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&q=80"
+                  src="/images/Affiches/visite.jpg"
                   alt="Affiche du spectacle actuel"
                   fill
                   className="object-cover"
@@ -207,7 +207,7 @@ export default async function Home() {
             <div className="w-full md:w-1/2">
               <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800&q=80"
+                  src="/images/Affiches/visite.jpg"
                   alt="Scène du spectacle"
                   width={800}
                   height={450}

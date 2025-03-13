@@ -11,7 +11,7 @@ export default function Hero() {
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative w-full max-w-md aspect-[2/3] shadow-xl rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&q=80"
+                src="/images/Affiches/visite.jpg"
                 alt="Affiche du spectacle actuel"
                 fill
                 className="object-cover"

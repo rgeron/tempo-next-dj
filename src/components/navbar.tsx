@@ -36,12 +36,7 @@ export default function Navbar() {
       }
     };
 
-    // Initial check for hash in URL
-    if (window.location.hash) {
-      handleHashChange();
-    }
-
-    // Add event listener for hash changes
+    // Add event listener for hash changes (but don't trigger on initial load)
     window.addEventListener("hashchange", handleHashChange);
 
     return () => {
