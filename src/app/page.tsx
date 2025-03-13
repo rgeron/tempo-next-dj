@@ -1,9 +1,9 @@
-import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { createClient } from "../../supabase/server";
+import Navbar from "@/components/navbar";
 import { ArrowUpRight, Calendar, MapPin, Ticket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { createClient } from "../../supabase/server";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -235,8 +235,7 @@ export default async function Home() {
                 {
                   title: "Le songe d'une nuit d'été",
                   date: "Avril 2024",
-                  image:
-                    "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&q=80",
+                  image: "/images/Affiches/Songe2.png",
                   youtubeUrl:
                     "https://youtu.be/fh1phNN9u8s?si=ZwpxNSE2f2MnarA7",
                   description:
@@ -245,8 +244,7 @@ export default async function Home() {
                 {
                   title: "Les jumeaux vénitiens",
                   date: "Décembre 2023",
-                  image:
-                    "https://images.unsplash.com/photo-1598387993281-cecf8b71a8f8?w=800&q=80",
+                  image: "/images/Affiches/Jumeaux.jpg",
                   youtubeUrl:
                     "https://youtu.be/4t701ayLoUU?si=ehL11ZzN8EQmRayw",
                   description:
@@ -255,8 +253,7 @@ export default async function Home() {
                 {
                   title: "Un fil à la patte",
                   date: "Avril 2023",
-                  image:
-                    "https://images.unsplash.com/photo-1603739903239-8b6e64c3b185?w=800&q=80",
+                  image: "/images/Affiches/fil.jpg",
                   youtubeUrl:
                     "https://youtu.be/6esbvoB5DTY?si=Y96LSJZW8Ld1cV-u",
                   description: "Le chef-d'œuvre comique de Georges Feydeau",
@@ -275,13 +272,7 @@ export default async function Home() {
                     <div className="bg-white rounded-xl shadow-md overflow-hidden h-full">
                       <div className="relative w-full aspect-[2/3]">
                         <Image
-                          src={
-                            index === 0
-                              ? "/images/Affiches/Songe1.png"
-                              : index === 1
-                                ? "/images/Affiches/Jumeaux.jpg"
-                                : "/images/Affiches/fil.jpeg"
-                          }
+                          src={show.image}
                           alt={show.title}
                           fill
                           className="object-cover"
