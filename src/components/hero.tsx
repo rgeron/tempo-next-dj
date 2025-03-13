@@ -22,10 +22,10 @@ export default function Hero() {
                   PRÉSENTE
                 </span>
                 <h3 className="text-white text-3xl font-bold mt-1">
-                  Le Songe d'une Nuit d'Été
+                  La visite de la vieille dame
                 </h3>
                 <p className="text-white/90 mt-2">
-                  Une comédie de William Shakespeare
+                  Une pièce de Friedrich Dürrenmatt
                 </p>
               </div>
             </div>
@@ -49,16 +49,18 @@ export default function Hero() {
                 <Calendar className="w-5 h-5 text-blue-600 mt-1" />
                 <div>
                   <h3 className="font-semibold">Dates des représentations</h3>
-                  <p className="text-gray-600">Du 15 au 30 juin 2024</p>
+                  <p className="text-gray-600">7 et 8 avril à HEC</p>
+                  <p className="text-gray-600">12 avril au Palais des Glaces</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-blue-600 mt-1" />
                 <div>
-                  <h3 className="font-semibold">Lieu</h3>
+                  <h3 className="font-semibold">Lieux</h3>
+                  <p className="text-gray-600">Campus HEC (7 et 8 avril)</p>
                   <p className="text-gray-600">
-                    Théâtre Municipal, 12 rue des Arts
+                    Palais des Glaces, Paris (12 avril)
                   </p>
                 </div>
               </div>
@@ -67,8 +69,9 @@ export default function Hero() {
                 <Ticket className="w-5 h-5 text-blue-600 mt-1" />
                 <div>
                   <h3 className="font-semibold">Tarifs</h3>
+                  <p className="text-gray-600">À HEC: 7-12€ selon catégorie</p>
                   <p className="text-gray-600">
-                    Adultes: 18€ | Étudiants/Seniors: 12€
+                    Au Palais des Glaces: 12-20€ selon catégorie
                   </p>
                 </div>
               </div>

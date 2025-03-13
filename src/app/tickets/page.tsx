@@ -28,8 +28,8 @@ export default async function TicketsPage() {
               Réservation de Billets
             </h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Réservez vos places pour notre spectacle "Le Songe d'une Nuit
-              d'Été" et vivez une expérience théâtrale inoubliable.
+              Réservez vos places pour notre spectacle "La visite de la vieille
+              dame" et vivez une expérience théâtrale inoubliable.
             </p>
           </div>
 
@@ -47,23 +47,38 @@ export default async function TicketsPage() {
                     <div>
                       <h3 className="font-semibold">Dates</h3>
                       <p className="text-sm text-gray-600">
-                        Du 15 au 30 juin 2024
+                        7 avril 2024 - 20h00 (HEC)
                       </p>
-                      <p className="text-sm text-gray-600">Séances à 20h00</p>
+                      <p className="text-sm text-gray-600">
+                        8 avril 2024 - 20h00 (HEC)
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        12 avril 2024 - 17h00 (Palais des Glaces)
+                      </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
                     <Ticket className="w-5 h-5 text-blue-600 mt-1" />
                     <div>
-                      <h3 className="font-semibold">Tarifs</h3>
-                      <p className="text-sm text-gray-600">Adulte: 18€</p>
+                      <h3 className="font-semibold">Tarifs à HEC</h3>
+                      <p className="text-sm text-gray-600">Étudiants HEC: 7€</p>
                       <p className="text-sm text-gray-600">
-                        Étudiant/Senior: 12€
+                        Personnes -26 ans: 9€
+                      </p>
+                      <p className="text-sm text-gray-600">Personnel HEC: 9€</p>
+                      <p className="text-sm text-gray-600">Autres: 12€</p>
+
+                      <h3 className="font-semibold mt-4">
+                        Tarifs au Palais des Glaces
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        Étudiants HEC: 12€
                       </p>
                       <p className="text-sm text-gray-600">
-                        Enfant (-12 ans): 8€
+                        Personnes -26 ans: 15€
                       </p>
+                      <p className="text-sm text-gray-600">Autres: 20€</p>
                     </div>
                   </div>
 

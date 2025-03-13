@@ -103,7 +103,13 @@ export type Database = {
           customer_email: string
           customer_name: string
           customer_phone: string | null
+          hec_staff_tickets: number | null
+          hec_student_tickets: number | null
           id: string
+          other_tickets: number | null
+          palais_hec_student_tickets: number | null
+          palais_other_tickets: number | null
+          palais_young_tickets: number | null
           payment_intent_id: string | null
           payment_status: string
           show_date: string
@@ -111,6 +117,8 @@ export type Database = {
           total_amount: number
           updated_at: string | null
           user_id: string | null
+          venue: string | null
+          young_tickets: number | null
         }
         Insert: {
           adult_tickets?: number
@@ -119,7 +127,13 @@ export type Database = {
           customer_email: string
           customer_name: string
           customer_phone?: string | null
+          hec_staff_tickets?: number | null
+          hec_student_tickets?: number | null
           id?: string
+          other_tickets?: number | null
+          palais_hec_student_tickets?: number | null
+          palais_other_tickets?: number | null
+          palais_young_tickets?: number | null
           payment_intent_id?: string | null
           payment_status?: string
           show_date: string
@@ -127,6 +141,8 @@ export type Database = {
           total_amount: number
           updated_at?: string | null
           user_id?: string | null
+          venue?: string | null
+          young_tickets?: number | null
         }
         Update: {
           adult_tickets?: number
@@ -135,7 +151,13 @@ export type Database = {
           customer_email?: string
           customer_name?: string
           customer_phone?: string | null
+          hec_staff_tickets?: number | null
+          hec_student_tickets?: number | null
           id?: string
+          other_tickets?: number | null
+          palais_hec_student_tickets?: number | null
+          palais_other_tickets?: number | null
+          palais_young_tickets?: number | null
           payment_intent_id?: string | null
           payment_status?: string
           show_date?: string
@@ -143,6 +165,8 @@ export type Database = {
           total_amount?: number
           updated_at?: string | null
           user_id?: string | null
+          venue?: string | null
+          young_tickets?: number | null
         }
         Relationships: []
       }

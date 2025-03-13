@@ -24,33 +24,77 @@ serve(async (req) => {
       email,
       phone,
       date,
-      adult_tickets,
-      student_tickets,
-      child_tickets,
+      hec_student_tickets,
+      young_tickets,
+      hec_staff_tickets,
+      other_tickets,
+      palais_hec_student_tickets,
+      palais_young_tickets,
+      palais_other_tickets,
       user_id,
       return_url,
     } = await req.json();
 
     // Validate required fields
-    if (
-      !name ||
-      !email ||
-      !date ||
-      (!adult_tickets && !student_tickets && !child_tickets)
-    ) {
+    if (!name || !email || !date) {
       throw new Error("Missing required parameters");
     }
 
-    // Calculate total amount
-    const adultPrice = 1800; // 18€ in cents
-    const studentPrice = 1200; // 12€ in cents
-    const childPrice = 800; // 8€ in cents
+    // Validate that at least one ticket is selected
+    const isHecVenue = date.includes("hec");
+    const isPalaisVenue = date.includes("palais");
 
-    const adultTotal = (parseInt(adult_tickets) || 0) * adultPrice;
-    const studentTotal = (parseInt(student_tickets) || 0) * studentPrice;
-    const childTotal = (parseInt(child_tickets) || 0) * childPrice;
+    if (
+      isHecVenue &&
+      !parseInt(hec_student_tickets || "0") &&
+      !parseInt(young_tickets || "0") &&
+      !parseInt(hec_staff_tickets || "0") &&
+      !parseInt(other_tickets || "0")
+    ) {
+      throw new Error("At least one HEC ticket must be selected");
+    }
 
-    const totalAmount = adultTotal + studentTotal + childTotal;
+    if (
+      isPalaisVenue &&
+      !parseInt(palais_hec_student_tickets || "0") &&
+      !parseInt(palais_young_tickets || "0") &&
+      !parseInt(palais_other_tickets || "0")
+    ) {
+      throw new Error("At least one Palais des Glaces ticket must be selected");
+    }
+
+    // Calculate total amount based on venue
+    let totalAmount = 0;
+    const isHecVenue = date.includes("hec");
+    const isPalaisVenue = date.includes("palais");
+
+    if (isHecVenue) {
+      const hecStudentPrice = 700; // 7€ in cents
+      const youngPrice = 900; // 9€ in cents
+      const hecStaffPrice = 900; // 9€ in cents
+      const otherPrice = 1200; // 12€ in cents
+
+      const hecStudentTotal =
+        (parseInt(hec_student_tickets) || 0) * hecStudentPrice;
+      const youngTotal = (parseInt(young_tickets) || 0) * youngPrice;
+      const hecStaffTotal = (parseInt(hec_staff_tickets) || 0) * hecStaffPrice;
+      const otherTotal = (parseInt(other_tickets) || 0) * otherPrice;
+
+      totalAmount = hecStudentTotal + youngTotal + hecStaffTotal + otherTotal;
+    } else if (isPalaisVenue) {
+      const palaisHecStudentPrice = 1200; // 12€ in cents
+      const palaisYoungPrice = 1500; // 15€ in cents
+      const palaisOtherPrice = 2000; // 20€ in cents
+
+      const palaisHecStudentTotal =
+        (parseInt(palais_hec_student_tickets) || 0) * palaisHecStudentPrice;
+      const palaisYoungTotal =
+        (parseInt(palais_young_tickets) || 0) * palaisYoungPrice;
+      const palaisOtherTotal =
+        (parseInt(palais_other_tickets) || 0) * palaisOtherPrice;
+
+      totalAmount = palaisHecStudentTotal + palaisYoungTotal + palaisOtherTotal;
+    }
 
     if (totalAmount <= 0) {
       throw new Error("Total amount must be greater than 0");
@@ -58,47 +102,126 @@ serve(async (req) => {
 
     // Create line items for Stripe
     const lineItems = [];
+    const showTitle = "La visite de la vieille dame";
 
-    if (parseInt(adult_tickets) > 0) {
-      lineItems.push({
-        price_data: {
-          currency: "eur",
-          product_data: {
-            name: "Billet Adulte - Le Songe d'une Nuit d'Été",
-            description: `Représentation du ${new Date(date).toLocaleDateString("fr-FR")}`,
-          },
-          unit_amount: adultPrice,
-        },
-        quantity: parseInt(adult_tickets),
-      });
+    // Format the date for display
+    let displayDate = "";
+    let venue = "";
+
+    if (date.includes("hec")) {
+      if (date.includes("07")) {
+        displayDate = "7 avril 2024 à 20h00";
+      } else if (date.includes("08")) {
+        displayDate = "8 avril 2024 à 20h00";
+      }
+      venue = "Campus HEC";
+    } else if (date.includes("palais")) {
+      displayDate = "12 avril 2024 à 17h00";
+      venue = "Palais des Glaces, Paris";
     }
 
-    if (parseInt(student_tickets) > 0) {
-      lineItems.push({
-        price_data: {
-          currency: "eur",
-          product_data: {
-            name: "Billet Étudiant/Senior - Le Songe d'une Nuit d'Été",
-            description: `Représentation du ${new Date(date).toLocaleDateString("fr-FR")}`,
+    // Add HEC tickets
+    if (isHecVenue) {
+      if (parseInt(hec_student_tickets) > 0) {
+        lineItems.push({
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `Billet Étudiant HEC - ${showTitle}`,
+              description: `${displayDate} - ${venue}`,
+            },
+            unit_amount: 700, // 7€
           },
-          unit_amount: studentPrice,
-        },
-        quantity: parseInt(student_tickets),
-      });
+          quantity: parseInt(hec_student_tickets),
+        });
+      }
+
+      if (parseInt(young_tickets) > 0) {
+        lineItems.push({
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `Billet -26 ans - ${showTitle}`,
+              description: `${displayDate} - ${venue}`,
+            },
+            unit_amount: 900, // 9€
+          },
+          quantity: parseInt(young_tickets),
+        });
+      }
+
+      if (parseInt(hec_staff_tickets) > 0) {
+        lineItems.push({
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `Billet Personnel HEC - ${showTitle}`,
+              description: `${displayDate} - ${venue}`,
+            },
+            unit_amount: 900, // 9€
+          },
+          quantity: parseInt(hec_staff_tickets),
+        });
+      }
+
+      if (parseInt(other_tickets) > 0) {
+        lineItems.push({
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `Billet Standard - ${showTitle}`,
+              description: `${displayDate} - ${venue}`,
+            },
+            unit_amount: 1200, // 12€
+          },
+          quantity: parseInt(other_tickets),
+        });
+      }
     }
 
-    if (parseInt(child_tickets) > 0) {
-      lineItems.push({
-        price_data: {
-          currency: "eur",
-          product_data: {
-            name: "Billet Enfant - Le Songe d'une Nuit d'Été",
-            description: `Représentation du ${new Date(date).toLocaleDateString("fr-FR")}`,
+    // Add Palais des Glaces tickets
+    if (isPalaisVenue) {
+      if (parseInt(palais_hec_student_tickets) > 0) {
+        lineItems.push({
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `Billet Étudiant HEC - ${showTitle}`,
+              description: `${displayDate} - ${venue}`,
+            },
+            unit_amount: 1200, // 12€
           },
-          unit_amount: childPrice,
-        },
-        quantity: parseInt(child_tickets),
-      });
+          quantity: parseInt(palais_hec_student_tickets),
+        });
+      }
+
+      if (parseInt(palais_young_tickets) > 0) {
+        lineItems.push({
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `Billet -26 ans - ${showTitle}`,
+              description: `${displayDate} - ${venue}`,
+            },
+            unit_amount: 1500, // 15€
+          },
+          quantity: parseInt(palais_young_tickets),
+        });
+      }
+
+      if (parseInt(palais_other_tickets) > 0) {
+        lineItems.push({
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `Billet Standard - ${showTitle}`,
+              description: `${displayDate} - ${venue}`,
+            },
+            unit_amount: 2000, // 20€
+          },
+          quantity: parseInt(palais_other_tickets),
+        });
+      }
     }
 
     // Create Stripe checkout session
@@ -132,19 +255,38 @@ serve(async (req) => {
         Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "",
       );
 
-      await supabaseAdmin.from("tickets").insert({
+      // Prepare ticket data based on venue
+      let ticketData = {
         user_id: user_id || null,
         customer_name: name,
         customer_email: email,
         customer_phone: phone || null,
-        show_date: new Date(date).toISOString(),
-        adult_tickets: parseInt(adult_tickets) || 0,
-        student_tickets: parseInt(student_tickets) || 0,
-        child_tickets: parseInt(child_tickets) || 0,
+        show_date: date,
+        venue: isHecVenue ? "Campus HEC" : "Palais des Glaces",
         total_amount: totalAmount / 100,
         payment_status: "pending",
         payment_intent_id: session.payment_intent || null,
-      });
+      };
+
+      // Add ticket counts based on venue
+      if (isHecVenue) {
+        ticketData = {
+          ...ticketData,
+          hec_student_tickets: parseInt(hec_student_tickets) || 0,
+          young_tickets: parseInt(young_tickets) || 0,
+          hec_staff_tickets: parseInt(hec_staff_tickets) || 0,
+          other_tickets: parseInt(other_tickets) || 0,
+        };
+      } else if (isPalaisVenue) {
+        ticketData = {
+          ...ticketData,
+          palais_hec_student_tickets: parseInt(palais_hec_student_tickets) || 0,
+          palais_young_tickets: parseInt(palais_young_tickets) || 0,
+          palais_other_tickets: parseInt(palais_other_tickets) || 0,
+        };
+      }
+
+      await supabaseAdmin.from("tickets").insert(ticketData);
     }
 
     return new Response(

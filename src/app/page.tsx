@@ -34,10 +34,10 @@ export default async function Home() {
                     PRÉSENTE
                   </span>
                   <h3 className="text-white text-3xl font-bold mt-1">
-                    Le Songe d'une Nuit d'Été
+                    La visite de la vieille dame
                   </h3>
                   <p className="text-white/90 mt-2">
-                    Une comédie de William Shakespeare
+                    Une pièce de Friedrich Dürrenmatt
                   </p>
                 </div>
               </div>
@@ -61,16 +61,20 @@ export default async function Home() {
                   <Calendar className="w-5 h-5 text-blue-600 mt-1" />
                   <div>
                     <h3 className="font-semibold">Dates des représentations</h3>
-                    <p className="text-gray-600">Du 15 au 30 juin 2024</p>
+                    <p className="text-gray-600">7 et 8 avril à HEC</p>
+                    <p className="text-gray-600">
+                      12 avril au Palais des Glaces
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-blue-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold">Lieu</h3>
+                    <h3 className="font-semibold">Lieux</h3>
+                    <p className="text-gray-600">Campus HEC (7 et 8 avril)</p>
                     <p className="text-gray-600">
-                      Théâtre Municipal, 12 rue des Arts
+                      Palais des Glaces, Paris (12 avril)
                     </p>
                   </div>
                 </div>
@@ -80,7 +84,10 @@ export default async function Home() {
                   <div>
                     <h3 className="font-semibold">Tarifs</h3>
                     <p className="text-gray-600">
-                      Adultes: 18€ | Étudiants/Seniors: 12€
+                      À HEC: 7-12€ selon catégorie
+                    </p>
+                    <p className="text-gray-600">
+                      Au Palais des Glaces: 12-20€ selon catégorie
                     </p>
                   </div>
                 </div>
@@ -155,18 +162,21 @@ export default async function Home() {
 
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="w-full md:w-1/2 space-y-6">
-              <h3 className="text-2xl font-bold">Le Songe d'une Nuit d'Été</h3>
+              <h3 className="text-2xl font-bold">
+                La visite de la vieille dame
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                Dans cette adaptation contemporaine de l'œuvre de Shakespeare,
-                nous transportons le public dans un univers où réalité et
-                fantaisie se confondent. Amours contrariés, interventions
-                magiques et quiproquos hilarants s'entremêlent dans une mise en
-                scène inventive qui ravira petits et grands.
+                Dans cette pièce captivante de Friedrich Dürrenmatt, nous
+                explorons les thèmes de la vengeance, de la justice et de la
+                corruption morale. Claire Zahanassian, devenue immensément
+                riche, revient dans sa ville natale pour se venger d'un ancien
+                amant qui l'a abandonnée.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Mise en scène par Marie Dubois, cette production met en valeur
-                le talent de notre troupe tout en offrant une relecture fraîche
-                et accessible de ce chef-d'œuvre du théâtre élisabéthain.
+                Notre mise en scène contemporaine met en lumière la critique
+                sociale et les dilemmes moraux de cette œuvre majeure du théâtre
+                germanophone, offrant une expérience théâtrale intense et
+                mémorable.
               </p>
               <div className="pt-4">
                 <Link
