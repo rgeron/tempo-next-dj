@@ -65,8 +65,6 @@ serve(async (req) => {
 
     // Calculate total amount based on venue
     let totalAmount = 0;
-    const isHecVenue = date.includes("hec");
-    const isPalaisVenue = date.includes("palais");
 
     if (isHecVenue) {
       const hecStudentPrice = 700; // 7€ in cents
@@ -238,9 +236,8 @@ serve(async (req) => {
         email,
         phone: phone || "",
         date,
-        adult_tickets: adult_tickets || "0",
-        student_tickets: student_tickets || "0",
-        child_tickets: child_tickets || "0",
+        // Remove undefined variables
+
         total_amount: (totalAmount / 100).toFixed(2),
       },
     });
