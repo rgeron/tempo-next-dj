@@ -22,6 +22,33 @@ export default function Navbar() {
     fetchUser();
   }, []);
 
+  useEffect(() => {
+    // Handle hash links for smooth scrolling
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      }
+    };
+
+    // Initial check for hash in URL
+    if (window.location.hash) {
+      handleHashChange();
+    }
+
+    // Add event listener for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   return (
     <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">

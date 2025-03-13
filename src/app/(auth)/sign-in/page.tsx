@@ -49,7 +49,7 @@ export default async function SignInPage({ searchParams }: LoginProps) {
                 <p className="font-medium">Espace réservé aux membres</p>
                 <p>
                   Pour créer un compte, vous devez connaître le mot de passe
-                  secret : "tirebouchon"
+                  secret de la troupe.
                 </p>
               </div>
             </div>

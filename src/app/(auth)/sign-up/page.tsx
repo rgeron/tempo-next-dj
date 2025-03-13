@@ -44,8 +44,8 @@ export default async function Signup(props: {
               <div>
                 <p className="font-medium">Réservé aux membres de la troupe</p>
                 <p>
-                  Vous devez connaître le mot de passe secret pour créer un
-                  compte.
+                  Vous devez connaître le mot de passe secret de la troupe pour
+                  créer un compte.
                 </p>
               </div>
             </div>

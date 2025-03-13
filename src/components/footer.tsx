@@ -1,8 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const handleScrollToElement = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <footer className="bg-gray-50 border-t border-gray-100">
@@ -48,6 +58,7 @@ export default function Footer() {
                 <Link
                   href="/#spectacle"
                   className="text-gray-600 hover:text-red-600"
+                  onClick={handleScrollToElement("spectacle")}
                 >
                   Spectacle Actuel
                 </Link>
@@ -56,6 +67,7 @@ export default function Footer() {
                 <Link
                   href="/#about"
                   className="text-gray-600 hover:text-red-600"
+                  onClick={handleScrollToElement("about")}
                 >
                   À Propos
                 </Link>

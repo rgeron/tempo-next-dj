@@ -19,7 +19,7 @@ interface Member {
 export const promo2024 = [
   {
     title: "Adèle Quesnoit",
-    src: "/images/CF/Adèle.jpg",
+    src: "/images/CF/Promo2024/Adèle.jpg",
     poste: "Membre éminente",
     roles: {
       JV: "Arlequin",
@@ -28,7 +28,7 @@ export const promo2024 = [
   },
   {
     title: "Ambre Caillaux",
-    src: "/images/CF/Ambre.jpg",
+    src: "/images/CF/Promo2024/Ambre.jpg",
     poste: "Trésorière",
     roles: {
       JV: "Brighella",
@@ -37,7 +37,7 @@ export const promo2024 = [
   },
   {
     title: "Arthur Milgrom",
-    src: "/images/CF/Arthur.jpg",
+    src: "/images/CF/Promo2024/Arthur.jpg",
     poste: "Responsable représentation",
     roles: {
       JV: "Tonino",
@@ -46,7 +46,7 @@ export const promo2024 = [
   },
   {
     title: "Gabriel Fauchon",
-    src: "/images/CF/Gabriel.jpg",
+    src: "/images/CF/Promo2024/Gabriel.jpg",
     poste: "Vice-président",
     roles: {
       JV: "Pancrace",
@@ -55,7 +55,7 @@ export const promo2024 = [
   },
   {
     title: "Garance Pauwels",
-    src: "/images/CF/Garance.jpg",
+    src: "/images/CF/Promo2024/Garance.jpg",
     poste: "Secrétaire générale",
     roles: {
       JV: "Colombine",
@@ -64,7 +64,7 @@ export const promo2024 = [
   },
   {
     title: "Matthis Cadeau",
-    src: "/images/CF/Matthis.jpg",
+    src: "/images/CF/Promo2024/Matthis.jpg",
     poste: "Membre éminent parti trop vite",
     roles: {
       JV: "Le marquis Lelio",
@@ -74,7 +74,7 @@ export const promo2024 = [
   },
   {
     title: "Mia Berthier",
-    src: "/images/CF/Mia.jpg",
+    src: "/images/CF/Promo2024/Mia.jpg",
     poste: "Membre Membre éminente partie trop vite",
     roles: {
       JV: "Pantalone",
@@ -85,7 +85,7 @@ export const promo2024 = [
   },
   {
     title: "Nell Sibue",
-    src: "/images/CF/Nell.jpg",
+    src: "/images/CF/Promo2024/Nell.jpg",
     poste: "Responsable cohésion",
     roles: {
       JV: "Beatrice",
@@ -94,7 +94,7 @@ export const promo2024 = [
   },
   {
     title: "Raphaël Géron",
-    src: "/images/CF/Raphaël.jpg",
+    src: "/images/CF/Promo2024/Raphaël.jpg",
     poste: "Vice-président",
     roles: {
       JV: "Florindo",
@@ -104,7 +104,7 @@ export const promo2024 = [
   },
   {
     title: "Sacha Malochet",
-    src: "/images/CF/Sacha.jpg",
+    src: "/images/CF/Promo2024/Sacha.jpg",
     poste: "Président",
     roles: {
       JV: "Zanetto",
@@ -113,7 +113,7 @@ export const promo2024 = [
   },
   {
     title: "Selene Brunel",
-    src: "/images/CF/Selene.jpg",
+    src: "/images/CF/Promo2024/Selene.jpg",
     poste: "Membre éminente partie trop vite",
     roles: {
       JV: "Le Prévôt",
@@ -123,7 +123,7 @@ export const promo2024 = [
   },
   {
     title: "Zineb Senhaji",
-    src: "/images/CF/Zineb.jpg",
+    src: "/images/CF/Promo2024/Zineb.jpg",
     poste: "Membre éminente partie trop vite",
     roles: {
       JV: "Tiburce",
@@ -133,8 +133,102 @@ export const promo2024 = [
   },
 ];
 
+export const promo2025 = [
+  {
+    title: "Alexandre",
+    src: "/images/CF/Promo2025/Alexandre.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Alexis",
+    src: "/images/CF/Promo2025/Alexis.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Camille",
+    src: "/images/CF/Promo2025/Camille.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Florence",
+    src: "/images/CF/Promo2025/Florence.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Gabriel B",
+    src: "/images/CF/Promo2025/GabrielB.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Jade",
+    src: "/images/CF/Promo2025/Jade.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Jules",
+    src: "/images/CF/Promo2025/Jules.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Lothaire",
+    src: "/images/CF/Promo2025/Lothaire.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Madeleine",
+    src: "/images/CF/Promo2025/Madeleine.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Nicolas",
+    src: "/images/CF/Promo2025/Nicolas.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
+];
+
 const promos = {
   "2024": promo2024,
+  "2025": promo2025,
 };
 
 export default function PromosPage() {
