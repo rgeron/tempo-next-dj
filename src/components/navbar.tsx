@@ -1,15 +1,26 @@
+"use client";
+
 import Link from "next/link";
-import { createClient } from "../../supabase/server";
+import { createClient } from "../../supabase/client";
 import { Button } from "./ui/button";
 import { Ticket, UserCircle, Users } from "lucide-react";
 import UserProfile from "./user-profile";
+import { useEffect, useState } from "react";
 
-export default async function Navbar() {
-  const supabase = createClient();
+export default function Navbar() {
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  const {
-    data: { user },
-  } = await (await supabase).auth.getUser();
+  useEffect(() => {
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+      setLoading(false);
+    };
+
+    fetchUser();
+  }, []);
 
   return (
     <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50">
@@ -45,7 +56,13 @@ export default async function Navbar() {
           >
             Billetterie
           </Link>
-          {user && (
+          <Link
+            href="/promos"
+            className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+          >
+            Voir les promos
+          </Link>
+          {!loading && user && (
             <Link
               href="/dashboard"
               className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
@@ -56,7 +73,7 @@ export default async function Navbar() {
         </div>
 
         <div className="flex gap-4 items-center">
-          {user ? (
+          {!loading && user ? (
             <>
               <Link href="/dashboard">
                 <Button className="flex items-center gap-2">
