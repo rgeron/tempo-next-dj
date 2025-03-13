@@ -34,8 +34,7 @@ export default function Hero() {
           {/* Right side - Text and CTA */}
           <div className="w-full md:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Troupe de Théâtre{" "}
-              <span className="text-blue-600">DOUBLE JEU</span>
+              Troupe de Théâtre <span className="text-red-600">DOUBLE JEU</span>
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed">
@@ -46,7 +45,7 @@ export default function Hero() {
 
             <div className="space-y-4 py-2">
               <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-blue-600 mt-1" />
+                <Calendar className="w-5 h-5 text-red-600 mt-1" />
                 <div>
                   <h3 className="font-semibold">Dates des représentations</h3>
                   <p className="text-gray-600">7 et 8 avril à HEC</p>
@@ -55,7 +54,7 @@ export default function Hero() {
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-blue-600 mt-1" />
+                <MapPin className="w-5 h-5 text-red-600 mt-1" />
                 <div>
                   <h3 className="font-semibold">Lieux</h3>
                   <p className="text-gray-600">Campus HEC (7 et 8 avril)</p>
@@ -66,7 +65,7 @@ export default function Hero() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Ticket className="w-5 h-5 text-blue-600 mt-1" />
+                <Ticket className="w-5 h-5 text-red-600 mt-1" />
                 <div>
                   <h3 className="font-semibold">Tarifs</h3>
                   <p className="text-gray-600">À HEC: 7-12€ selon catégorie</p>
@@ -80,7 +79,7 @@ export default function Hero() {
             <div className="pt-4">
               <Link
                 href="/tickets"
-                className="inline-flex items-center px-8 py-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-medium shadow-md"
+                className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-all transform hover:scale-105 text-lg font-medium shadow-md"
               >
                 Acheter des billets
                 <ArrowUpRight className="ml-2 w-5 h-5" />

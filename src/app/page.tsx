@@ -47,7 +47,7 @@ export default async function Home() {
             <div className="w-full md:w-1/2 space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
                 Troupe de Théâtre{" "}
-                <span className="text-blue-600">DOUBLE JEU</span>
+                <span className="text-red-600">DOUBLE JEU</span>
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -58,7 +58,7 @@ export default async function Home() {
 
               <div className="space-y-4 py-2">
                 <div className="flex items-start gap-3">
-                  <Calendar className="w-5 h-5 text-blue-600 mt-1" />
+                  <Calendar className="w-5 h-5 text-red-600 mt-1" />
                   <div>
                     <h3 className="font-semibold">Dates des représentations</h3>
                     <p className="text-gray-600">7 et 8 avril à HEC</p>
@@ -69,7 +69,7 @@ export default async function Home() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-blue-600 mt-1" />
+                  <MapPin className="w-5 h-5 text-red-600 mt-1" />
                   <div>
                     <h3 className="font-semibold">Lieux</h3>
                     <p className="text-gray-600">Campus HEC (7 et 8 avril)</p>
@@ -80,7 +80,7 @@ export default async function Home() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Ticket className="w-5 h-5 text-blue-600 mt-1" />
+                  <Ticket className="w-5 h-5 text-red-600 mt-1" />
                   <div>
                     <h3 className="font-semibold">Tarifs</h3>
                     <p className="text-gray-600">
@@ -96,7 +96,7 @@ export default async function Home() {
               <div className="pt-4">
                 <Link
                   href="/tickets"
-                  className="inline-flex items-center px-8 py-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-medium shadow-md"
+                  className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-all transform hover:scale-105 text-lg font-medium shadow-md"
                 >
                   Acheter des billets
                   <ArrowUpRight className="ml-2 w-5 h-5" />
@@ -197,7 +197,7 @@ export default async function Home() {
               <div className="pt-4">
                 <Link
                   href="/tickets"
-                  className="inline-flex items-center px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center px-6 py-3 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
                 >
                   Réserver maintenant
                   <ArrowUpRight className="ml-2 w-4 h-4" />
@@ -273,9 +273,15 @@ export default async function Home() {
                     className="block h-full transform transition-transform hover:scale-105"
                   >
                     <div className="bg-white rounded-xl shadow-md overflow-hidden h-full">
-                      <div className="relative h-48 w-full">
+                      <div className="relative w-full aspect-[2/3]">
                         <Image
-                          src={show.image}
+                          src={
+                            index === 0
+                              ? "/images/Affiches/Songe1.png"
+                              : index === 1
+                                ? "/images/Affiches/Jumeaux.jpg"
+                                : "/images/Affiches/fil.jpeg"
+                          }
                           alt={show.title}
                           fill
                           className="object-cover"
@@ -287,7 +293,7 @@ export default async function Home() {
                         </div>
                       </div>
                       <div className="p-5">
-                        <div className="text-sm text-blue-600 font-medium mb-1">
+                        <div className="text-sm text-red-600 font-medium mb-1">
                           {show.date}
                         </div>
                         <h3 className="text-lg font-bold mb-2">{show.title}</h3>
@@ -344,7 +350,7 @@ export default async function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600 text-white">
+      <section className="py-20 bg-red-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Prêt à vivre une expérience théâtrale inoubliable ?
@@ -355,7 +361,7 @@ export default async function Home() {
           </p>
           <Link
             href="/tickets"
-            className="inline-flex items-center px-8 py-4 text-blue-600 bg-white rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105 text-lg font-medium shadow-md"
+            className="inline-flex items-center px-8 py-4 text-red-600 bg-white rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105 text-lg font-medium shadow-md"
           >
             Acheter des billets
             <ArrowUpRight className="ml-2 w-5 h-5" />

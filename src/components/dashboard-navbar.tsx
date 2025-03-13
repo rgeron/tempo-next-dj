@@ -20,7 +20,7 @@ export default function DashboardNavbar() {
     <nav className="w-full border-b border-gray-200 bg-white py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <Link href="/" prefetch className="text-2xl font-bold text-blue-600">
+          <Link href="/" prefetch className="text-2xl font-bold text-red-600">
             DOUBLE JEU
           </Link>
         </div>
@@ -28,28 +28,28 @@ export default function DashboardNavbar() {
         <div className="hidden md:flex gap-6 items-center">
           <Link
             href="/dashboard"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1.5"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors flex items-center gap-1.5"
           >
             <Home className="h-4 w-4" />
             Accueil
           </Link>
           <Link
             href="#"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1.5"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors flex items-center gap-1.5"
           >
             <Camera className="h-4 w-4" />
             Photos
           </Link>
           <Link
             href="#"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1.5"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors flex items-center gap-1.5"
           >
             <MessageCircle className="h-4 w-4" />
             Forum
           </Link>
           <Link
             href="#"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1.5"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors flex items-center gap-1.5"
           >
             <Users className="h-4 w-4" />
             Membres
@@ -59,7 +59,7 @@ export default function DashboardNavbar() {
         <div className="flex gap-4 items-center">
           <Link
             href="/"
-            className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
           >
             Retour au site
           </Link>

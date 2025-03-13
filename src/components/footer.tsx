@@ -32,14 +32,14 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4">Liens Rapides</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-600 hover:text-blue-600">
+                <Link href="/" className="text-gray-600 hover:text-red-600">
                   Accueil
                 </Link>
               </li>
               <li>
                 <Link
                   href="/tickets"
-                  className="text-gray-600 hover:text-blue-600"
+                  className="text-gray-600 hover:text-red-600"
                 >
                   Billetterie
                 </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#spectacle"
-                  className="text-gray-600 hover:text-blue-600"
+                  className="text-gray-600 hover:text-red-600"
                 >
                   Spectacle Actuel
                 </Link>
@@ -55,7 +55,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#about"
-                  className="text-gray-600 hover:text-blue-600"
+                  className="text-gray-600 hover:text-red-600"
                 >
                   À Propos
                 </Link>
@@ -68,22 +68,22 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4">Informations</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-600">
+                <Link href="#" className="text-gray-600 hover:text-red-600">
                   Mentions Légales
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-600">
+                <Link href="#" className="text-gray-600 hover:text-red-600">
                   Politique de Confidentialité
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-600">
+                <Link href="#" className="text-gray-600 hover:text-red-600">
                   Conditions Générales
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-600">
+                <Link href="#" className="text-gray-600 hover:text-red-600">
                   Accessibilité
                 </Link>
               </li>
@@ -97,11 +97,11 @@ export default function Footer() {
           </div>
 
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-blue-600">
+            <a href="#" className="text-gray-400 hover:text-red-600">
               <span className="sr-only">Facebook</span>
               <Facebook className="h-5 w-5" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-blue-600">
+            <a href="#" className="text-gray-400 hover:text-red-600">
               <span className="sr-only">Instagram</span>
               <Instagram className="h-5 w-5" />
             </a>

@@ -43,7 +43,7 @@ export default async function TicketsPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <Calendar className="w-5 h-5 text-blue-600 mt-1" />
+                    <Calendar className="w-5 h-5 text-red-600 mt-1" />
                     <div>
                       <h3 className="font-semibold">Dates</h3>
                       <p className="text-sm text-gray-600">
@@ -59,7 +59,7 @@ export default async function TicketsPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Ticket className="w-5 h-5 text-blue-600 mt-1" />
+                    <Ticket className="w-5 h-5 text-red-600 mt-1" />
                     <div>
                       <h3 className="font-semibold">Tarifs à HEC</h3>
                       <p className="text-sm text-gray-600">Étudiants HEC: 7€</p>
@@ -83,7 +83,7 @@ export default async function TicketsPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Info className="w-5 h-5 text-blue-600 mt-1" />
+                    <Info className="w-5 h-5 text-red-600 mt-1" />
                     <div>
                       <h3 className="font-semibold">Informations</h3>
                       <p className="text-sm text-gray-600">

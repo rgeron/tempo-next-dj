@@ -25,47 +25,47 @@ export default function Navbar() {
   return (
     <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" prefetch className="text-2xl font-bold text-blue-600">
+        <Link href="/" prefetch className="text-2xl font-bold text-red-600">
           DOUBLE JEU
         </Link>
 
         <div className="hidden md:flex gap-8 items-center">
           <Link
             href="/"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors"
           >
             Accueil
           </Link>
           <Link
             href="/#spectacle"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors"
             scroll={false}
           >
             Spectacle
           </Link>
           <Link
             href="/#about"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors"
             scroll={false}
           >
             À Propos
           </Link>
           <Link
             href="/tickets"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors"
           >
             Billetterie
           </Link>
           <Link
             href="/promos"
-            className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="font-medium text-gray-700 hover:text-red-600 transition-colors"
           >
             Voir les promos
           </Link>
           {!loading && user && (
             <Link
               href="/dashboard"
-              className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+              className="font-medium text-gray-700 hover:text-red-600 transition-colors"
             >
               Espace Membres
             </Link>
