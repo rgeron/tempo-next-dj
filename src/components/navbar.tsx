@@ -28,12 +28,14 @@ export default async function Navbar() {
           <Link
             href="/#spectacle"
             className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            scroll={false}
           >
             Spectacle
           </Link>
           <Link
             href="/#about"
             className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            scroll={false}
           >
             À Propos
           </Link>

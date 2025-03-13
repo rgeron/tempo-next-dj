@@ -67,3 +67,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom scrollbar styling */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom triangle for play button */
+  .border-l-12 {
+    border-left-width: 12px;
+  }
+}

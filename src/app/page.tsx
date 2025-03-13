@@ -108,7 +108,7 @@ export default async function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="about" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
@@ -124,26 +124,42 @@ export default async function Home() {
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-xl font-semibold mb-3">Notre Histoire</h3>
               <p className="text-gray-600">
-                Fondée en 1995 par un groupe d'amis passionnés, DOUBLE JEU s'est
-                rapidement imposée comme une référence dans le paysage théâtral
-                local.
+                Depuis 25 ans, Double Jeu fait vibrer la scène d'HEC Paris en
+                réunissant des passionnés de théâtre autour de spectacles
+                toujours plus ambitieux. Ce qui n'était au départ qu'une troupe
+                étudiante s'est transformé en un véritable collectif artistique,
+                attirant chaque année des talents désireux de faire vivre des
+                pièces de qualité. Aujourd'hui, nous avons la fierté de proposer
+                deux spectacles par an, dont l'un dans un théâtre parisien
+                prestigieux, le Palais des Glaces.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-xl font-semibold mb-3">Notre Vision</h3>
               <p className="text-gray-600">
-                Rendre le théâtre accessible à tous en proposant des spectacles
-                de qualité qui touchent, questionnent et divertissent.
+                Nous croyons que le théâtre est une aventure collective où se
+                mêlent rigueur, créativité et audace. Notre ambition ? Offrir
+                aux étudiants et au public des pièces captivantes, mises en
+                scène par un professionnel reconnu, dans des conditions
+                quasi-professionnelles. Chaque production est l'occasion de
+                repousser nos limites et d'explorer de nouvelles formes
+                d'expression artistique, tout en préservant l'esprit d'équipe et
+                de transmission qui fait la force de notre troupe.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-xl font-semibold mb-3">Notre Équipe</h3>
               <p className="text-gray-600">
-                Une troupe de 15 comédiens talentueux, soutenus par des
-                techniciens et bénévoles passionnés qui donnent vie à chaque
-                production.
+                Double Jeu, c'est une vingtaine d'étudiants réunis par une
+                passion commune et répartis sur deux promotions. Chaque année,
+                huit nouveaux comédiens rejoignent la troupe après des auditions
+                exigeantes, intégrant un groupe soudé où l'expérience des
+                anciens se transmet aux nouveaux. Mais notre équipe ne se limite
+                pas à la scène : décorateurs, costumiers, responsables de la
+                communication… Chacun a un rôle clé à jouer pour donner vie aux
+                spectacles qui marquent la vie du campus.
               </p>
             </div>
           </div>
@@ -151,7 +167,7 @@ export default async function Home() {
       </section>
 
       {/* Current Production Section */}
-      <section className="py-24 bg-white">
+      <section id="spectacle" className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Notre Spectacle Actuel</h2>
@@ -203,8 +219,93 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Previous Shows Section */}
       <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Nos anciens spectacles</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Découvrez nos précédentes productions à travers ces extraits vidéo
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="flex overflow-x-auto pb-8 space-x-6 scrollbar-hide snap-x snap-mandatory">
+              {[
+                {
+                  title: "Le songe d'une nuit d'été",
+                  date: "Avril 2024",
+                  image:
+                    "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&q=80",
+                  youtubeUrl:
+                    "https://youtu.be/fh1phNN9u8s?si=ZwpxNSE2f2MnarA7",
+                  description:
+                    "Une adaptation onirique de l'œuvre de Shakespeare",
+                },
+                {
+                  title: "Les jumeaux vénitiens",
+                  date: "Décembre 2023",
+                  image:
+                    "https://images.unsplash.com/photo-1598387993281-cecf8b71a8f8?w=800&q=80",
+                  youtubeUrl:
+                    "https://youtu.be/4t701ayLoUU?si=ehL11ZzN8EQmRayw",
+                  description:
+                    "Une comédie italienne pleine de rebondissements",
+                },
+                {
+                  title: "Un fil à la patte",
+                  date: "Avril 2023",
+                  image:
+                    "https://images.unsplash.com/photo-1603739903239-8b6e64c3b185?w=800&q=80",
+                  youtubeUrl:
+                    "https://youtu.be/6esbvoB5DTY?si=Y96LSJZW8Ld1cV-u",
+                  description: "Le chef-d'œuvre comique de Georges Feydeau",
+                },
+              ].map((show, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 snap-center w-80 md:w-96"
+                >
+                  <a
+                    href={show.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-full transform transition-transform hover:scale-105"
+                  >
+                    <div className="bg-white rounded-xl shadow-md overflow-hidden h-full">
+                      <div className="relative h-48 w-full">
+                        <Image
+                          src={show.image}
+                          alt={show.title}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
+                            <div className="w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-12 border-l-red-600 ml-1"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-5">
+                        <div className="text-sm text-blue-600 font-medium mb-1">
+                          {show.date}
+                        </div>
+                        <h3 className="text-lg font-bold mb-2">{show.title}</h3>
+                        <p className="text-gray-600 text-sm">
+                          {show.description}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Ce que dit notre public</h2>
@@ -231,7 +332,7 @@ export default async function Home() {
                   "Un moment magique en famille. Les enfants ont adoré et nous aussi ! Nous reviendrons sans hésiter.",
               },
             ].map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm">
+              <div key={index} className="bg-gray-50 p-6 rounded-xl shadow-sm">
                 <p className="italic text-gray-600 mb-4">
                   "{testimonial.quote}"
                 </p>
