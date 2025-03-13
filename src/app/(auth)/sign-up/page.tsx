@@ -6,6 +6,7 @@ import Link from "next/link";
 import { SmtpMessage } from "../smtp-message";
 import { signUpAction } from "@/app/actions";
 import Navbar from "@/components/navbar";
+import { InfoIcon } from "lucide-react";
 
 export default async function Signup(props: {
   searchParams: Promise<Message>;
@@ -38,16 +39,27 @@ export default async function Signup(props: {
               </p>
             </div>
 
+            <div className="bg-blue-50 p-4 rounded-md flex gap-3 text-sm text-blue-700">
+              <InfoIcon className="h-5 w-5 flex-shrink-0 text-blue-500" />
+              <div>
+                <p className="font-medium">Réservé aux membres de la troupe</p>
+                <p>
+                  Vous devez connaître le mot de passe secret pour créer un
+                  compte.
+                </p>
+              </div>
+            </div>
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="full_name" className="text-sm font-medium">
-                  Full Name
+                  Nom complet
                 </Label>
                 <Input
                   id="full_name"
                   name="full_name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Jean Dupont"
                   required
                   className="w-full"
                 />
@@ -61,7 +73,7 @@ export default async function Signup(props: {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="vous@exemple.com"
                   required
                   className="w-full"
                 />
@@ -69,14 +81,28 @@ export default async function Signup(props: {
 
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-sm font-medium">
-                  Password
+                  Mot de passe
                 </Label>
                 <Input
                   id="password"
                   type="password"
                   name="password"
-                  placeholder="Your password"
+                  placeholder="Votre mot de passe"
                   minLength={6}
+                  required
+                  className="w-full"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="secret_code" className="text-sm font-medium">
+                  Mot de passe secret de la troupe
+                </Label>
+                <Input
+                  id="secret_code"
+                  name="secret_code"
+                  type="password"
+                  placeholder="Mot de passe secret"
                   required
                   className="w-full"
                 />
@@ -85,10 +111,10 @@ export default async function Signup(props: {
 
             <SubmitButton
               formAction={signUpAction}
-              pendingText="Signing up..."
+              pendingText="Inscription en cours..."
               className="w-full"
             >
-              Sign up
+              S'inscrire
             </SubmitButton>
 
             <FormMessage message={searchParams} />

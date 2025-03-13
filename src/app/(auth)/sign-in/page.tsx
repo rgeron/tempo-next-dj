@@ -5,6 +5,7 @@ import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { InfoIcon } from "lucide-react";
 
 interface LoginProps {
   searchParams: Promise<Message>;
@@ -28,16 +29,29 @@ export default async function SignInPage({ searchParams }: LoginProps) {
         <div className="w-full max-w-md rounded-lg border border-border bg-card p-6 shadow-sm">
           <form className="flex flex-col space-y-6">
             <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-semibold tracking-tight">Sign in</h1>
+              <h1 className="text-3xl font-semibold tracking-tight">
+                Connexion
+              </h1>
               <p className="text-sm text-muted-foreground">
-                Don't have an account?{" "}
+                Vous n'avez pas de compte ?{" "}
                 <Link
                   className="text-primary font-medium hover:underline transition-all"
                   href="/sign-up"
                 >
-                  Sign up
+                  S'inscrire
                 </Link>
               </p>
+            </div>
+
+            <div className="bg-blue-50 p-4 rounded-md flex gap-3 text-sm text-blue-700">
+              <InfoIcon className="h-5 w-5 flex-shrink-0 text-blue-500" />
+              <div>
+                <p className="font-medium">Espace réservé aux membres</p>
+                <p>
+                  Pour créer un compte, vous devez connaître le mot de passe
+                  secret : "tirebouchon"
+                </p>
+              </div>
             </div>
 
             <div className="space-y-4">
@@ -49,7 +63,7 @@ export default async function SignInPage({ searchParams }: LoginProps) {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="vous@exemple.com"
                   required
                   className="w-full"
                 />
@@ -58,20 +72,20 @@ export default async function SignInPage({ searchParams }: LoginProps) {
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <Label htmlFor="password" className="text-sm font-medium">
-                    Password
+                    Mot de passe
                   </Label>
                   <Link
                     className="text-xs text-muted-foreground hover:text-foreground hover:underline transition-all"
                     href="/forgot-password"
                   >
-                    Forgot Password?
+                    Mot de passe oublié ?
                   </Link>
                 </div>
                 <Input
                   id="password"
                   type="password"
                   name="password"
-                  placeholder="Your password"
+                  placeholder="Votre mot de passe"
                   required
                   className="w-full"
                 />
@@ -80,10 +94,10 @@ export default async function SignInPage({ searchParams }: LoginProps) {
 
             <SubmitButton
               className="w-full"
-              pendingText="Signing in..."
+              pendingText="Connexion en cours..."
               formAction={signInAction}
             >
-              Sign in
+              Se connecter
             </SubmitButton>
 
             <FormMessage message={message} />

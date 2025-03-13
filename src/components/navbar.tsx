@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { createClient } from "../../supabase/server";
 import { Button } from "./ui/button";
-import { Ticket, UserCircle } from "lucide-react";
+import { Ticket, UserCircle, Users } from "lucide-react";
 import UserProfile from "./user-profile";
 
 export default async function Navbar() {
@@ -43,13 +43,24 @@ export default async function Navbar() {
           >
             Billetterie
           </Link>
+          {user && (
+            <Link
+              href="/dashboard"
+              className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Espace Membres
+            </Link>
+          )}
         </div>
 
         <div className="flex gap-4 items-center">
           {user ? (
             <>
               <Link href="/dashboard">
-                <Button>Mon Compte</Button>
+                <Button className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  Espace Membres
+                </Button>
               </Link>
               <UserProfile />
             </>
