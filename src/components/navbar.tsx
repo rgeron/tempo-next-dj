@@ -91,6 +91,7 @@ export default function Navbar() {
           >
             Voir les promos
           </Link>
+          <div className="h-5 w-px bg-gray-300"></div>
           <Link
             href="/tickets"
             className="font-medium text-gray-700 hover:text-red-600 transition-colors"
