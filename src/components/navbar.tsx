@@ -96,6 +96,7 @@ export default function Navbar() {
           >
             Billetterie
           </Link>
+          {!loading && user && <div className="h-5 w-px bg-gray-300"></div>}
           {!loading && user && (
             <Link
               href="/dashboard"
