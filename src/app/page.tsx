@@ -191,14 +191,8 @@ export default async function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/images/Affiches/visite.jpg"
-                  alt="Scène du spectacle"
-                  width={800}
-                  height={450}
-                  className="object-cover w-full h-full"
-                />
+              <div className="aspect-video rounded-xl overflow-hidden shadow-lg bg-black flex items-center justify-center">
+                <span className="text-white/80 text-2xl font-medium">La visite de la vieille dame</span>
               </div>
             </div>
           </div>
