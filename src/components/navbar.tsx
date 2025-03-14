@@ -1,11 +1,11 @@
 "use client";
 
+import { Ticket, Users } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { createClient } from "../../supabase/client";
 import { Button } from "./ui/button";
-import { Ticket, UserCircle, Users } from "lucide-react";
 import UserProfile from "./user-profile";
-import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [user, setUser] = useState<any>(null);
@@ -44,6 +44,14 @@ export default function Navbar() {
     };
   }, []);
 
+  const handleScrollToElement = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -53,36 +61,31 @@ export default function Navbar() {
 
         <div className="hidden md:flex gap-8 items-center">
           <Link
-            href="/"
+            href="/#about"
             className="font-medium text-gray-700 hover:text-red-600 transition-colors"
+            onClick={handleScrollToElement("about")}
           >
-            Accueil
+            À Propos
           </Link>
           <Link
             href="/#spectacle"
             className="font-medium text-gray-700 hover:text-red-600 transition-colors"
-            scroll={false}
+            onClick={handleScrollToElement("spectacle")}
           >
-            Spectacle
+            Spectacles
           </Link>
+
           <Link
-            href="/#about"
+            href="/promos"
             className="font-medium text-gray-700 hover:text-red-600 transition-colors"
-            scroll={false}
           >
-            À Propos
+            Voir les promos
           </Link>
           <Link
             href="/tickets"
             className="font-medium text-gray-700 hover:text-red-600 transition-colors"
           >
             Billetterie
-          </Link>
-          <Link
-            href="/promos"
-            className="font-medium text-gray-700 hover:text-red-600 transition-colors"
-          >
-            Voir les promos
           </Link>
           {!loading && user && (
             <Link
