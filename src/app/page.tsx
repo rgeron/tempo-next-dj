@@ -46,14 +46,12 @@ export default async function Home() {
             {/* Right side - Text and CTA */}
             <div className="w-full md:w-1/2 space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-                Troupe de Théâtre{" "}
-                <span className="text-red-600">DOUBLE JEU</span>
+                Troupe <span className="text-red-600">DOUBLE JEU</span>
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
-                Depuis 1995, notre troupe enchante le public avec des
-                interprétations vibrantes des plus grands classiques et des
-                créations originales audacieuses.
+                Nous sommes la troupe de théâtre d'HEC Paris. Nous vous
+                proposons deux spectacles originaux tous les ans.
               </p>
 
               <div className="space-y-4 py-2">
