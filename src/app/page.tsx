@@ -21,24 +21,12 @@ export default async function Home() {
           <div className="flex flex-col md:flex-row items-center gap-12">
             {/* Left side - Poster */}
             <div className="w-full md:w-1/2 flex justify-center">
-              <div className="relative w-full max-w-md aspect-[2/3] shadow-xl rounded-lg overflow-hidden">
-                <Image
-                  src="/images/Affiches/visite.jpg"
-                  alt="Affiche du spectacle actuel"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              <div className="relative w-full max-w-md aspect-[2/3] shadow-xl rounded-lg overflow-hidden bg-black flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                  <span className="text-white/80 text-sm font-medium">
-                    PRÉSENTE
-                  </span>
                   <h3 className="text-white text-3xl font-bold mt-1">
                     La visite de la vieille dame
                   </h3>
-                  <p className="text-white/90 mt-2">
-                    Une pièce de Friedrich Dürrenmatt
-                  </p>
+                  <p className="text-white/90 mt-2">de Friedrich Dürrenmatt</p>
                 </div>
               </div>
             </div>
