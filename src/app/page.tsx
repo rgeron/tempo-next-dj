@@ -108,9 +108,7 @@ export default async function Home() {
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               Notre Spectacle Actuel
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Une adaptation moderne et surprenante d'un classique intemporel
-            </p>
+
             <div className="mt-6 w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
           </div>
 
