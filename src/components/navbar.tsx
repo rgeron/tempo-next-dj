@@ -1,10 +1,8 @@
 "use client";
 
-import { Ticket, Users } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createClient } from "../../supabase/client";
-import { Button } from "./ui/button";
 import UserProfile from "./user-profile";
 
 export default function Navbar() {
@@ -111,22 +109,12 @@ export default function Navbar() {
         <div className="flex gap-4 items-center">
           {!loading && user ? (
             <>
-              <Link href="/dashboard">
-                <Button className="flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  Espace Membres
-                </Button>
-              </Link>
+              <Link href="/dashboard"></Link>
               <UserProfile />
             </>
           ) : (
             <>
-              <Link href="/tickets">
-                <Button className="flex items-center gap-2">
-                  <Ticket className="h-4 w-4" />
-                  Acheter des billets
-                </Button>
-              </Link>
+              <Link href="/tickets"></Link>
               <Link
                 href="/sign-in"
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900"
