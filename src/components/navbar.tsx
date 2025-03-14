@@ -46,9 +46,19 @@ export default function Navbar() {
 
   const handleScrollToElement = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    // Check if we're on the homepage
+    const isHomePage = window.location.pathname === "/";
+
+    if (isHomePage) {
+      // If already on homepage, just scroll
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If not on homepage, navigate to homepage with hash
+      window.location.href = `/#${id}`;
     }
   };
 
