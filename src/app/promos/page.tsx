@@ -222,6 +222,15 @@ export const promo2025 = [
     },
     commentaireOR: "",
   },
+  {
+    title: "Louise Rivier",
+    src: "/images/CF/Promo2025/optimized/Louise.jpg",
+    poste: "Membre",
+    roles: {
+      VVD: "À compléter",
+    },
+    commentaireOR: "",
+  },
 ];
 
 const promos = {
@@ -247,17 +256,13 @@ export default function PromosPage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold">
               Les Promotions de DOUBLE JEU
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Découvrez les membres qui ont fait partie de notre troupe au fil
-              des années
-            </p>
           </div>
 
           <div className="mb-8 flex justify-center">
-            <div className="bg-white p-4 rounded-xl shadow-sm inline-flex">
+            <div className="bg-white p-4 rounded-xl inline-flex">
               <select
                 className="px-4 py-2 border rounded-md text-lg font-medium"
                 value={selectedPromo}
@@ -273,45 +278,43 @@ export default function PromosPage() {
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-sm">
-            <h2 className="text-xl font-semibold mb-6 text-center">
-              Promotion {selectedPromo}
-            </h2>
-
             {filteredMembers.length === 0 ? (
               <p className="text-center py-8 text-gray-500">
                 Aucun membre trouvé pour cette promotion
               </p>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredMembers.map((member, index) => (
                   <Card
                     key={index}
                     className="overflow-hidden hover:shadow-md transition-shadow"
                   >
-                    <div className="relative h-64 w-full">
+                    <div className="relative h-48 w-full">
                       <Image
                         src={member.src}
                         alt={member.title}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         quality={80}
                         loading={index < 4 ? "eager" : "lazy"}
                         placeholder="blur"
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                       />
                     </div>
-                    <CardHeader className="pb-2">
-                      <CardTitle>{member.title}</CardTitle>
+                    <CardHeader className="pb-1 pt-3">
+                      <CardTitle className="text-base">
+                        {member.title}
+                      </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <p className="font-medium text-blue-600 mb-2">
+                    <CardContent className="pt-0">
+                      <p className="font-medium text-blue-600 text-sm mb-1">
                         {member.poste}
                       </p>
 
-                      <div className="space-y-1 mb-3">
-                        <p className="text-sm font-semibold">Rôles :</p>
-                        <ul className="text-sm text-gray-600">
+                      <div className="space-y-1 mb-2">
+                        <p className="text-xs font-semibold">Rôles :</p>
+                        <ul className="text-xs text-gray-600">
                           {Object.entries(member.roles).map(
                             ([abbr, role], idx) => (
                               <li key={idx}>
@@ -328,7 +331,7 @@ export default function PromosPage() {
                       </div>
 
                       {member.commentaireOR && (
-                        <div className="text-sm italic text-gray-500 mt-2">
+                        <div className="text-xs italic text-gray-500 mt-1">
                           <span className="font-medium">On raconte </span>
                           {member.commentaireOR}
                         </div>
