@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@polar-sh/sdk": "^0.26.1",
@@ -44,6 +45,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2",
     "tailwindcss": "^3",
     "tailwindcss-animate": "^1",
