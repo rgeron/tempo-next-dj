@@ -86,7 +86,7 @@ export default function PricingCard({
           }}
           className={`w-full py-6 text-lg font-medium`}
         >
-          Get Started
+          Fais pas le rat
         </Button>
       </CardFooter>
     </Card>
