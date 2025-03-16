@@ -136,19 +136,35 @@ export default function TicketForm({ userId, userEmail }: TicketFormProps) {
       }
 
       // Create checkout session
-      const { data, error } = await supabase.functions.invoke(
-        "supabase-functions-create-ticket-checkout",
-        {
-          body: {
-            ...formData,
-            user_id: userId,
-            return_url: window.location.origin,
-          },
-        },
-      );
+      console.log("Sending request to edge function with data:", {
+        ...formData,
+        user_id: userId,
+        return_url: window.location.origin,
+      });
 
-      if (error) {
-        throw error;
+      try {
+        const { data, error } = await supabase.functions.invoke(
+          "create-ticket-checkout",
+          {
+            body: {
+              ...formData,
+              user_id: userId,
+              return_url: window.location.origin,
+            },
+          },
+        );
+
+        console.log("Edge function response:", { data, error });
+
+        if (error) {
+          console.error("Edge function error:", error);
+          throw error;
+        }
+      } catch (invokeError) {
+        console.error("Failed to invoke edge function:", invokeError);
+        throw new Error(
+          `Failed to send request to edge function: ${invokeError.message}`,
+        );
       }
 
       // Redirect to Stripe checkout

@@ -19,6 +19,23 @@ serve(async (req) => {
   }
 
   try {
+    console.log("Edge function received request");
+
+    let requestBody;
+    try {
+      requestBody = await req.json();
+      console.log("Request body parsed successfully:", requestBody);
+    } catch (parseError) {
+      console.error("Failed to parse request body:", parseError);
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON in request body" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
+      );
+    }
+
     const {
       name,
       email,
@@ -33,10 +50,12 @@ serve(async (req) => {
       palais_other_tickets,
       user_id,
       return_url,
-    } = await req.json();
+    } = requestBody;
 
     // Validate required fields
+    console.log("Validating required fields:", { name, email, date });
     if (!name || !email || !date) {
+      console.error("Missing required parameters:", { name, email, date });
       throw new Error("Missing required parameters");
     }
 
@@ -223,81 +242,118 @@ serve(async (req) => {
     }
 
     // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      line_items: lineItems,
-      mode: "payment",
-      success_url: `${return_url || "https://doublejeu-theatre.fr"}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${return_url || "https://doublejeu-theatre.fr"}/tickets?canceled=true`,
-      customer_email: email,
-      metadata: {
-        user_id: user_id || "",
-        name,
-        email,
-        phone: phone || "",
-        date,
-        // Remove undefined variables
-
-        total_amount: (totalAmount / 100).toFixed(2),
-      },
-    });
-
-    // Create a record in the tickets table
-    if (
-      Deno.env.get("SUPABASE_URL") &&
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")
-    ) {
-      const supabaseAdmin = createClient(
-        Deno.env.get("SUPABASE_URL") || "",
-        Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "",
-      );
-
-      // Prepare ticket data based on venue
-      let ticketData = {
-        user_id: user_id || null,
-        customer_name: name,
+    console.log("Creating Stripe checkout session with line items:", lineItems);
+    try {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: lineItems,
+        mode: "payment",
+        success_url: `${return_url || "https://doublejeu-theatre.fr"}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${return_url || "https://doublejeu-theatre.fr"}/tickets?canceled=true`,
         customer_email: email,
-        customer_phone: phone || null,
-        show_date: date,
-        venue: isHecVenue ? "Campus HEC" : "Palais des Glaces",
-        total_amount: totalAmount / 100,
-        payment_status: "pending",
-        payment_intent_id: session.payment_intent || null,
-      };
+        metadata: {
+          user_id: user_id || "",
+          name,
+          email,
+          phone: phone || "",
+          date,
+          // Remove undefined variables
 
-      // Add ticket counts based on venue
-      if (isHecVenue) {
-        ticketData = {
-          ...ticketData,
-          hec_student_tickets: parseInt(hec_student_tickets) || 0,
-          young_tickets: parseInt(young_tickets) || 0,
-          hec_staff_tickets: parseInt(hec_staff_tickets) || 0,
-          other_tickets: parseInt(other_tickets) || 0,
+          total_amount: (totalAmount / 100).toFixed(2),
+        },
+      });
+      console.log("Stripe session created successfully:", {
+        sessionId: session.id,
+      });
+
+      // Create a record in the tickets table
+      if (
+        Deno.env.get("SUPABASE_URL") &&
+        Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")
+      ) {
+        const supabaseAdmin = createClient(
+          Deno.env.get("SUPABASE_URL") || "",
+          Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "",
+        );
+
+        // Prepare ticket data based on venue
+        let ticketData = {
+          user_id: user_id || null,
+          customer_name: name,
+          customer_email: email,
+          customer_phone: phone || null,
+          show_date: date,
+          venue: isHecVenue ? "Campus HEC" : "Palais des Glaces",
+          total_amount: totalAmount / 100,
+          payment_status: "pending",
+          payment_intent_id: session.payment_intent || null,
         };
-      } else if (isPalaisVenue) {
-        ticketData = {
-          ...ticketData,
-          palais_hec_student_tickets: parseInt(palais_hec_student_tickets) || 0,
-          palais_young_tickets: parseInt(palais_young_tickets) || 0,
-          palais_other_tickets: parseInt(palais_other_tickets) || 0,
-        };
+
+        // Add ticket counts based on venue
+        if (isHecVenue) {
+          ticketData = {
+            ...ticketData,
+            hec_student_tickets: parseInt(hec_student_tickets) || 0,
+            young_tickets: parseInt(young_tickets) || 0,
+            hec_staff_tickets: parseInt(hec_staff_tickets) || 0,
+            other_tickets: parseInt(other_tickets) || 0,
+          };
+        } else if (isPalaisVenue) {
+          ticketData = {
+            ...ticketData,
+            palais_hec_student_tickets:
+              parseInt(palais_hec_student_tickets) || 0,
+            palais_young_tickets: parseInt(palais_young_tickets) || 0,
+            palais_other_tickets: parseInt(palais_other_tickets) || 0,
+          };
+        }
+
+        console.log("Inserting ticket data into Supabase:", ticketData);
+        const { data, error } = await supabaseAdmin
+          .from("tickets")
+          .insert(ticketData);
+
+        if (error) {
+          console.error("Error inserting ticket data:", error);
+          // Continue execution even if database insert fails
+        } else {
+          console.log("Ticket data inserted successfully");
+        }
+      } else {
+        console.log(
+          "Skipping database insert - Supabase credentials not available",
+        );
       }
 
-      await supabaseAdmin.from("tickets").insert(ticketData);
+      return new Response(
+        JSON.stringify({ sessionId: session.id, url: session.url }),
+        {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
+      );
+    } catch (stripeError) {
+      console.error("Error creating Stripe checkout session:", stripeError);
+      return new Response(
+        JSON.stringify({ error: `Stripe error: ${stripeError.message}` }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
+      );
     }
-
+  } catch (error) {
+    console.error("Error creating ticket checkout session:", error);
     return new Response(
-      JSON.stringify({ sessionId: session.id, url: session.url }),
+      JSON.stringify({
+        error: error.message,
+        stack: error.stack,
+        details: "An unexpected error occurred in the edge function",
+      }),
       {
-        status: 200,
+        status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       },
     );
-  } catch (error) {
-    console.error("Error creating ticket checkout session:", error);
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 400,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
   }
 });
