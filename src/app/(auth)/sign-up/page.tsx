@@ -107,6 +107,50 @@ export default async function Signup(props: {
                   className="w-full"
                 />
               </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="join_year" className="text-sm font-medium">
+                  Année d'entrée dans la troupe
+                </Label>
+                <Input
+                  id="join_year"
+                  name="join_year"
+                  type="number"
+                  placeholder="2015"
+                  min="1980"
+                  max="2023"
+                  required
+                  className="w-full"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone_number" className="text-sm font-medium">
+                  Numéro de téléphone
+                </Label>
+                <Input
+                  id="phone_number"
+                  name="phone_number"
+                  type="tel"
+                  placeholder="+33 6 12 34 56 78"
+                  required
+                  className="w-full"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="profession" className="text-sm font-medium">
+                  Activité professionnelle actuelle
+                </Label>
+                <Input
+                  id="profession"
+                  name="profession"
+                  type="text"
+                  placeholder="Consultant, Ingénieur, Étudiant..."
+                  required
+                  className="w-full"
+                />
+              </div>
             </div>
 
             <SubmitButton

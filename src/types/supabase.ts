@@ -179,7 +179,11 @@ export type Database = {
           full_name: string | null
           id: string
           image: string | null
+          is_former_member: boolean | null
+          join_year: number
           name: string | null
+          phone_number: string
+          profession: string
           subscription: string | null
           token_identifier: string
           updated_at: string | null
@@ -193,7 +197,11 @@ export type Database = {
           full_name?: string | null
           id: string
           image?: string | null
+          is_former_member?: boolean | null
+          join_year: number
           name?: string | null
+          phone_number: string
+          profession: string
           subscription?: string | null
           token_identifier: string
           updated_at?: string | null
@@ -207,7 +215,11 @@ export type Database = {
           full_name?: string | null
           id?: string
           image?: string | null
+          is_former_member?: boolean | null
+          join_year?: number
           name?: string | null
+          phone_number?: string
+          profession?: string
           subscription?: string | null
           token_identifier?: string
           updated_at?: string | null

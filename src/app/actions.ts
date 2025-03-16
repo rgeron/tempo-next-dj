@@ -10,6 +10,9 @@ export const signUpAction = async (formData: FormData) => {
   const password = formData.get("password")?.toString();
   const fullName = formData.get("full_name")?.toString() || "";
   const secretCode = formData.get("secret_code")?.toString();
+  const joinYear = formData.get("join_year")?.toString();
+  const phoneNumber = formData.get("phone_number")?.toString();
+  const profession = formData.get("profession")?.toString();
   const supabase = await createClient();
 
   if (!email || !password) {
@@ -29,6 +32,31 @@ export const signUpAction = async (formData: FormData) => {
     );
   }
 
+  // Validate required fields
+  if (!joinYear) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Veuillez indiquer votre année d'entrée dans la troupe",
+    );
+  }
+
+  if (!phoneNumber) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Veuillez indiquer votre numéro de téléphone",
+    );
+  }
+
+  if (!profession) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Veuillez indiquer votre activité professionnelle actuelle",
+    );
+  }
+
   const {
     data: { user },
     error,
@@ -39,6 +67,7 @@ export const signUpAction = async (formData: FormData) => {
       data: {
         full_name: fullName,
         email: email,
+        is_former_member: true,
       },
     },
   });
@@ -56,6 +85,10 @@ export const signUpAction = async (formData: FormData) => {
         email: email,
         token_identifier: user.id,
         created_at: new Date().toISOString(),
+        is_former_member: true,
+        join_year: parseInt(joinYear),
+        phone_number: phoneNumber,
+        profession: profession,
       });
 
       if (updateError) {
